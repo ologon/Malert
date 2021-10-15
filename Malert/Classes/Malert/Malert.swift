@@ -118,6 +118,17 @@ extension Malert {
         get { return malertView.margin }
         set { malertView.margin = newValue }
     }
+
+    public var width: CGFloat {
+        set { 
+            malertView.width = newValue
+            makeContraints()
+            viewDidLayoutSubviews()
+            view.layoutIfNeeded()
+            }
+        
+        get { return malertView.width }
+    }
     
     public var cornerRadius: CGFloat {
         get { return malertView.cornerRadius }

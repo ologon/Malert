@@ -39,24 +39,40 @@ extension Malert {
         UIDevice.current.orientation.isLandscape &&
             !preferredInterfaceOrientationForPresentation.isPortrait
     }
+
+    private func getPadding() -> CGFloat
+    {
+        var padding : CGFloat = 16
+        let screenWidth = UIScreen.main.bounds.size.width
+        if screenWidth - malertView.width > 16 * 2
+        {
+            padding = (screenWidth - malertView.width) / 2.0
+        }
+
+        return padding
+    }
     
     private func createMalertPortraitConstraints() -> [NSLayoutConstraint] {
+        let padding = getPadding()
+
         return [
             malertView.centerXAnchor.constraint(equalTo: visibleView.centerXAnchor),
             malertView.centerYAnchor.constraint(equalTo: visibleView.centerYAnchor),
-            malertView.trailingAnchor.constraint(equalTo: visibleView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            malertView.leadingAnchor.constraint(equalTo: visibleView.safeAreaLayoutGuide.leadingAnchor, constant: 16)
+            malertView.trailingAnchor.constraint(equalTo: visibleView.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            malertView.leadingAnchor.constraint(equalTo: visibleView.safeAreaLayoutGuide.leadingAnchor, constant: padding)
         ]
     }
     
     private func createMalertLandscapeConstraints() -> [NSLayoutConstraint] {
+        let padding = getPadding()
+
         return [
             malertView.centerXAnchor.constraint(equalTo: visibleView.centerXAnchor),
             malertView.centerYAnchor.constraint(equalTo: visibleView.centerYAnchor),
-            malertView.leadingAnchor.constraint(greaterThanOrEqualTo: visibleView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            malertView.trailingAnchor.constraint(greaterThanOrEqualTo: visibleView.safeAreaLayoutGuide.trailingAnchor, constant: 16),
-            malertView.topAnchor.constraint(greaterThanOrEqualTo: visibleView.safeAreaLayoutGuide.topAnchor, constant: 16),
-            malertView.bottomAnchor.constraint(greaterThanOrEqualTo: visibleView.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            malertView.leadingAnchor.constraint(greaterThanOrEqualTo: visibleView.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            malertView.trailingAnchor.constraint(greaterThanOrEqualTo: visibleView.safeAreaLayoutGuide.trailingAnchor, constant: padding),
+            //malertView.topAnchor.constraint(greaterThanOrEqualTo: visibleView.safeAreaLayoutGuide.topAnchor, constant: 16),
+            //malertView.bottomAnchor.constraint(greaterThanOrEqualTo: visibleView.safeAreaLayoutGuide.bottomAnchor, constant: -16),
         ]
     }
 }

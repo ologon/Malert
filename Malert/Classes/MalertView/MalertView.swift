@@ -40,6 +40,8 @@ public class MalertView: UIView {
             }
         }
     }
+
+    var width : CGFloat = 16
     
     // MARK: - Init
     
