@@ -64,15 +64,15 @@ extension Malert {
     }
     
     private func createMalertLandscapeConstraints() -> [NSLayoutConstraint] {
-        let padding = getPadding()
+        let padding = getPadding()*0.8
 
         return [
             malertView.centerXAnchor.constraint(equalTo: visibleView.centerXAnchor),
             malertView.centerYAnchor.constraint(equalTo: visibleView.centerYAnchor),
             malertView.leadingAnchor.constraint(greaterThanOrEqualTo: visibleView.safeAreaLayoutGuide.leadingAnchor, constant: padding),
             malertView.trailingAnchor.constraint(greaterThanOrEqualTo: visibleView.safeAreaLayoutGuide.trailingAnchor, constant: padding),
-            //malertView.topAnchor.constraint(greaterThanOrEqualTo: visibleView.safeAreaLayoutGuide.topAnchor, constant: 16),
-            //malertView.bottomAnchor.constraint(greaterThanOrEqualTo: visibleView.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            malertView.topAnchor.constraint(greaterThanOrEqualTo: visibleView.safeAreaLayoutGuide.topAnchor, constant: 16),
+            malertView.bottomAnchor.constraint(greaterThanOrEqualTo: visibleView.safeAreaLayoutGuide.bottomAnchor, constant: -16),
         ]
     }
 }
