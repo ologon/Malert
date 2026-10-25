@@ -43,7 +43,8 @@ extension Malert {
     private func getPadding() -> CGFloat
     {
         var padding : CGFloat = 16
-        let screenWidth = UIScreen.main.bounds.size.width
+        // The alert's own width, UIScreen.main can be another display (e.g. iPhone Duo unfolded)
+        let screenWidth = view.bounds.size.width
         if screenWidth - malertView.width > 16 * 2
         {
             padding = (screenWidth - malertView.width) / 2.0
